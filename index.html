@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>good-sticky</title>
+  <style>
+    body {
+      margin: 16px;
+    }
+
+    .sticky-wrapper {
+      /* 基準となる高さ */
+      height: 300px; 
+    }
+
+    .sticky-content-wrapper {
+      position: sticky;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      height: 300px; /* 基準となる高さ（初期値） */
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div
+    class="sticky-wrapper">
+    <!-- sticky-wrapperはスクロール量を意図どおりに計算するための固定の高さを持つ要素 -->
+    <div
+      class="sticky-content-wrapper">
+      <!-- sticky-content-wrapper内のトップレベルは1つのdivにする -->
+      <div
+        class="sticky-content">
+        <p>Sticky内部のコンテンツ</p>
+        <img src="https://3.bp.blogspot.com/-SatMN4CODFc/W5IADy_tLbI/AAAAAAABOxw/HBdNSPd13kQ8EhCDxVUdAPeU3XhcAdBygCLcBGAs/s180-c/seiza_shibireru_man.png" />
+      </div>
+    </div>
+  </div>
+  <div
+    class="content"
+    style="background-color: red">
+    another content 1
+  </div>
+  <div
+    class="content"
+    style="background-color: blue">
+    another content 2
+  </div>
+
+  <script type="text/javascript">
+    const element = document.querySelector('.sticky-content');
+
+    function handleScroll() {
+      // stickyの要素の高さをスクロール量に応じて変化させる
+      const height = 300 - window.scrollY;
+      element.style = "height: " + height + "px";
+    }
+
+    window.addEventListener('scroll', handleScroll);
+  </script>
+</body>
+</html>
